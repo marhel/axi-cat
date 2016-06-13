@@ -1,0 +1,210 @@
+
+eventbus:
+  log_driver: ''
+  tty: true
+  log_opt: {}
+  image: library/rabbitmq:3-management
+  stdin_open: true
+
+authentication:
+  image: axiell/lsp-subsys:master-300
+  environment:
+    SPLAT_ENV_NAME: "rancher"
+    SPLAT_SUBSYSTEM_NAME: "authentication"
+    SPLAT_PRODDEF_ROOT_DIR_PATH: "/app/config/authentication"
+    SPLAT_TENANT_CONFIG_FILE_PATH: /app/config/tenants.json
+    SPLAT_EVENT_BUS_HOST: "eventbus"
+    LSP_SEARCH_ENGINE_HOST: "searchengine"
+    LSP_AWS_CREDENTIALS: "AKIAJFLNQ2Y4THLSELFA,5F+q/wVsyM9RpevmG9pbeORSiQWPl1GODCupc+dG"
+    SPLAT_DEV_MODE: "0"
+    LSP_METRICS_ENABLED: "false"
+    LSP_DYNAMODB_HOST: "dynamodb"
+  links:
+  - eventbus:eventbus
+  external_links:
+  - elasticsearch/elasticsearch-clients:searchengine
+  tty: true
+  stdin_open: true
+  expose:
+  - "8080"
+
+circulation:
+  image: axiell/lsp-subsys:master-300
+  environment:
+    SPLAT_ENV_NAME: "rancher"
+    SPLAT_SUBSYSTEM_NAME: "circulation"
+    SPLAT_PRODDEF_ROOT_DIR_PATH: "/app/config/circulation"
+    SPLAT_TENANT_CONFIG_FILE_PATH: /app/config/tenants.json
+    SPLAT_EVENT_BUS_HOST: "eventbus"
+    LSP_SEARCH_ENGINE_HOST: "searchengine"
+    LSP_AWS_CREDENTIALS: "AKIAJFLNQ2Y4THLSELFA,5F+q/wVsyM9RpevmG9pbeORSiQWPl1GODCupc+dG"
+    SPLAT_DEV_MODE: "0"
+    LSP_METRICS_ENABLED: "false"
+    LSP_DYNAMODB_HOST: "dynamodb"
+  links:
+  - eventbus:eventbus
+  external_links:
+  - elasticsearch/elasticsearch-clients:searchengine
+  tty: true
+  stdin_open: true
+  expose:
+  - "8080"
+
+config:
+  image: axiell/lsp-subsys:master-300
+  environment:
+    SPLAT_ENV_NAME: "rancher"
+    SPLAT_SUBSYSTEM_NAME: "config"
+    SPLAT_PRODDEF_ROOT_DIR_PATH: "/app/config/config"
+    SPLAT_TENANT_CONFIG_FILE_PATH: /app/config/tenants.json
+    SPLAT_EVENT_BUS_HOST: "eventbus"
+    LSP_SEARCH_ENGINE_HOST: "searchengine"
+    LSP_AWS_CREDENTIALS: "AKIAJFLNQ2Y4THLSELFA,5F+q/wVsyM9RpevmG9pbeORSiQWPl1GODCupc+dG"
+    SPLAT_DEV_MODE: "0"
+    LSP_METRICS_ENABLED: "false"
+    LSP_DYNAMODB_HOST: "dynamodb"
+  links:
+  - eventbus:eventbus
+  external_links:
+  - elasticsearch/elasticsearch-clients:searchengine
+  tty: true
+  stdin_open: true
+  expose:
+  - "8080"
+
+frontend:
+  image: axiell/lsp-subsys:master-300
+  environment:
+    SPLAT_ENV_NAME: "rancher"
+    SPLAT_SUBSYSTEM_NAME: "frontend"
+    SPLAT_PRODDEF_ROOT_DIR_PATH: "/app/config/frontend"
+    SPLAT_TENANT_CONFIG_FILE_PATH: /app/config/tenants.json
+    SPLAT_EVENT_BUS_HOST: "eventbus"
+    LSP_SEARCH_ENGINE_HOST: "searchengine"
+    LSP_AWS_CREDENTIALS: "AKIAJFLNQ2Y4THLSELFA,5F+q/wVsyM9RpevmG9pbeORSiQWPl1GODCupc+dG"
+    SPLAT_DEV_MODE: "0"
+    LSP_METRICS_ENABLED: "false"
+    LSP_DYNAMODB_HOST: "dynamodb"
+  links:
+  - eventbus:eventbus
+  external_links:
+  - elasticsearch/elasticsearch-clients:searchengine
+  tty: true
+  stdin_open: true
+  expose:
+  - "8080"
+
+metadata:
+  image: axiell/lsp-subsys:master-300
+  environment:
+    SPLAT_ENV_NAME: "rancher"
+    SPLAT_SUBSYSTEM_NAME: "metadata"
+    SPLAT_PRODDEF_ROOT_DIR_PATH: "/app/config/metadata"
+    SPLAT_TENANT_CONFIG_FILE_PATH: /app/config/tenants.json
+    SPLAT_EVENT_BUS_HOST: "eventbus"
+    LSP_SEARCH_ENGINE_HOST: "searchengine"
+    LSP_AWS_CREDENTIALS: "AKIAJFLNQ2Y4THLSELFA,5F+q/wVsyM9RpevmG9pbeORSiQWPl1GODCupc+dG"
+    SPLAT_DEV_MODE: "0"
+    LSP_METRICS_ENABLED: "false"
+    LSP_DYNAMODB_HOST: "dynamodb"
+  links:
+  - eventbus:eventbus
+  external_links:
+  - elasticsearch/elasticsearch-clients:searchengine
+  tty: true
+  stdin_open: true
+  expose:
+  - "8080"
+
+patron:
+  image: axiell/lsp-subsys:master-300
+  environment:
+    SPLAT_ENV_NAME: "rancher"
+    SPLAT_SUBSYSTEM_NAME: "patron"
+    SPLAT_PRODDEF_ROOT_DIR_PATH: "/app/config/patron"
+    SPLAT_TENANT_CONFIG_FILE_PATH: /app/config/tenants.json
+    SPLAT_EVENT_BUS_HOST: "eventbus"
+    LSP_SEARCH_ENGINE_HOST: "searchengine"
+    LSP_AWS_CREDENTIALS: "AKIAJFLNQ2Y4THLSELFA,5F+q/wVsyM9RpevmG9pbeORSiQWPl1GODCupc+dG"
+    SPLAT_DEV_MODE: "0"
+    LSP_METRICS_ENABLED: "false"
+    LSP_DYNAMODB_HOST: "dynamodb"
+  links:
+  - eventbus:eventbus
+  external_links:
+  - elasticsearch/elasticsearch-clients:searchengine
+  tty: true
+  stdin_open: true
+  expose:
+  - "8080"
+
+skynet:
+  image: axiell/lsp-subsys:master-300
+  environment:
+    SPLAT_ENV_NAME: "rancher"
+    SPLAT_SUBSYSTEM_NAME: "skynet"
+    SPLAT_PRODDEF_ROOT_DIR_PATH: "/app/config/skynet"
+    SPLAT_TENANT_CONFIG_FILE_PATH: /app/config/tenants.json
+    SPLAT_EVENT_BUS_HOST: "eventbus"
+    LSP_SEARCH_ENGINE_HOST: "searchengine"
+    LSP_AWS_CREDENTIALS: "AKIAJFLNQ2Y4THLSELFA,5F+q/wVsyM9RpevmG9pbeORSiQWPl1GODCupc+dG"
+    SPLAT_DEV_MODE: "0"
+    LSP_METRICS_ENABLED: "false"
+    LSP_DYNAMODB_HOST: "dynamodb"
+  links:
+  - eventbus:eventbus
+  external_links:
+  - elasticsearch/elasticsearch-clients:searchengine
+  tty: true
+  stdin_open: true
+  expose:
+  - "8080"
+
+work:
+  image: axiell/lsp-subsys:master-300
+  environment:
+    SPLAT_ENV_NAME: "rancher"
+    SPLAT_SUBSYSTEM_NAME: "work"
+    SPLAT_PRODDEF_ROOT_DIR_PATH: "/app/config/work"
+    SPLAT_TENANT_CONFIG_FILE_PATH: /app/config/tenants.json
+    SPLAT_EVENT_BUS_HOST: "eventbus"
+    LSP_SEARCH_ENGINE_HOST: "searchengine"
+    LSP_AWS_CREDENTIALS: "AKIAJFLNQ2Y4THLSELFA,5F+q/wVsyM9RpevmG9pbeORSiQWPl1GODCupc+dG"
+    SPLAT_DEV_MODE: "0"
+    LSP_METRICS_ENABLED: "false"
+    LSP_DYNAMODB_HOST: "dynamodb"
+  links:
+  - eventbus:eventbus
+  external_links:
+  - elasticsearch/elasticsearch-clients:searchengine
+  tty: true
+  stdin_open: true
+  expose:
+  - "8080"
+
+proxy:
+  ports:
+  - 80:8080
+  labels:
+    io.rancher.loadbalancer.target.authentication: /authentication
+    io.rancher.loadbalancer.target.circulation: /circulation
+    io.rancher.loadbalancer.target.config: /config
+    io.rancher.loadbalancer.target.frontend: /frontend
+    io.rancher.loadbalancer.target.metadata: /metadata
+    io.rancher.loadbalancer.target.patron: /patron
+    io.rancher.loadbalancer.target.skynet: /skynet
+    io.rancher.loadbalancer.target.work: /work
+    io.rancher.scheduler.affinity:host_label: publicHttp=true
+  tty: true
+  image: rancher/load-balancer-service
+  links:
+  - authentication:authentication
+  - circulation:circulation
+  - config:config
+  - frontend:frontend
+  - metadata:metadata
+  - patron:patron
+  - skynet:skynet
+  - work:work
+  stdin_open: true
+
