@@ -1,3 +1,34 @@
+.catalog:
+  name: "Quria"
+  version: "master-300"
+  description: >
+    Quria is a cloud-based, digital-first Library Services Platform,
+    designed to facilitate the transformation of the modern public
+    library. It’s unique in how it supports library staff, making daily
+    work routines more efficient, dramatically reducing the number of
+    systems that staff need access to, and providing a complete overview
+    of what is happening in the library.
+  uuid: quria-master-300
+  minimum_rancher_version: v1.0.0
+  questions:
+    - variable: BASEDATA_IMPORT
+      label: "Import base data"
+      description: "Enable this option if base data should be imported the first time Quria is started."
+      required: true
+      type: "boolean"
+      default: false
+    - variable: ADMIN_USER
+      description: "Email for the initial admin user"
+      label: "Admin user email"
+      type: "string"
+      required: true
+      default: "quria@gmail.com"
+    - variable: "SEARCHENGINE_SERVICE"
+      label: "ElasticSearch Service"
+      type: "service"
+      required: true
+      description: Service that is running ElasticSearch
+
 authentication:
   scale: 1
   health_check:
